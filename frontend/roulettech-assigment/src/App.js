@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import ProfilePage from "./pages/Profile";
-import ExperiencePage from "./pages/Experience";
-import ProjectsPage from "./pages/Projects";
+import ProfilePage from "./pages/profile/Profile";
+import ExperiencePage from "./pages/experience/Experience";
+import ProjectsPage from "./pages/projects/Projects";
 import Navbar from "./components/navbar/Navbar";
 
 function App() {
