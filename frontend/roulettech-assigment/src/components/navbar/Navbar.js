@@ -21,9 +21,6 @@ export default function Navbar() {
           <li>
             <Link to="/projects">Projects</Link>
           </li>
-          <li>
-            <Link to="/contact-me">Contact Me</Link>
-          </li>
         </ul>
       </nav>
     </header>

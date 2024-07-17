@@ -1,0 +1,19 @@
+.education {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  position: relative;
+  left: 15%;
+  overflow: hidden;
+}
+
+.education .text {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  overflow: hidden;
+}
