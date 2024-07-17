@@ -1,5 +1,5 @@
 import classes from "./Introduction.module.css";
-import profilePicture from "../../ProfilePicture.jpeg";
+import profilePicture from "../../pictures/ProfilePicture.jpeg";
 
 export default function Introduction() {
   return (

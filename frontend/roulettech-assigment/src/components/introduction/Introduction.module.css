@@ -9,13 +9,28 @@
   margin-bottom: 5%;
 }
 
+.introduction::before {
+  content: "";
+  background-image: url('../../pictures/seattle.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  filter: brightness(20%);
+}
+
 .introduction img {
   border-radius: 50%;
+  position: relative;
   width: 25%;
   height: 25%;
+  border: 5px solid beige;
 }
 
 .introduction .text {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -27,21 +42,4 @@
 
 .introduction .text h2 {
   margin: 0;
-}
-
-.navigation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  
-}
-
-.links {
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }

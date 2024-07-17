@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import profilePicture from "../../ProfilePicture.jpeg";
+import profilePicture from "../../pictures/ProfilePicture.jpeg";
 import { Avatar } from "@mui/material"
 import classes from "./Navbar.module.css";
 
