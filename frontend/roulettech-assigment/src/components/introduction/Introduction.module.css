@@ -1,0 +1,46 @@
+.introduction {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.introduction img {
+  border-radius: 50%;
+  width: 25%;
+  height: 25%;
+}
+
+.introduction .text {
+  display: flex;
+  flex-direction: column;
+}
+
+.introduction .text h1 {
+  margin: 0;
+}
+
+.introduction .text h2 {
+  margin: 0;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+}
+
+.links {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

@@ -4,10 +4,12 @@ import ProfilePage from "./pages/Profile";
 import ExperiencePage from "./pages/Experience";
 import ProjectsPage from "./pages/Projects";
 import ContactMePage from "./pages/Contact-Me";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<ProfilePage />} />
         <Route path="/experience" element={<ExperiencePage />} />

@@ -1,0 +1,34 @@
+header {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 60%;
+}
+
+.aditya {
+  display: flex;
+  width: 30%;
+  align-items: center;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+  color: beige;
+}
