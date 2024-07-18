@@ -24,6 +24,14 @@ nav {
   margin: 16px;
 }
 
+.aditya .profilePicture {
+  margin-right: 6px;
+}
+
+.aditya h1 {
+  margin-left: 6px;
+}
+
 .links {
   display: flex;
   flex-wrap: wrap;
