@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, Fragment } from "react";
 import classes from "./Comments.module.css";
 import {
   Avatar,
@@ -8,6 +8,7 @@ import {
   ListItemText,
   TextField,
   Button,
+  Divider
 } from "@mui/material";
 
 export default function Comments() {
@@ -63,17 +64,25 @@ export default function Comments() {
             <List>
               {userComments.map((comment) => {
                 return (
-                  <ListItem key={comment.id} alignItems="flex-start">
-                    <ListItemAvatar>
-                      <Avatar alt="pic">{comment.name}</Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={comment.subject}
-                      secondary={comment.timestamp}
-                    >
-                      {comment.text}
-                    </ListItemText>
-                  </ListItem>
+                  <div className={classes.comment}>
+                    <ListItem key={comment.id} alignItems="flex-start">
+                      <ListItemAvatar>
+                        <Avatar alt="pic">{comment.name.charAt(0)}</Avatar>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={comment.subject}
+                        secondary={
+                          <Fragment>
+                            <span className={classes.timestamp}>{comment.timestamp}</span>
+                            <p className={classes.commentText}>{comment.text}</p>
+                          </Fragment>
+                        }
+                      >
+                        {comment.text}
+                      </ListItemText>
+                    </ListItem>
+                    <hr className={classes.divider} />
+                  </div>
                 );
               })}
             </List>
