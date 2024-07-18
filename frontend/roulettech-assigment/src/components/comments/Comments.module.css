@@ -1,3 +1,7 @@
+/* .comments * {
+  border: 1px solid red;
+} */
+
 .comments {
   width: 100%;
   height: 100%;
@@ -9,5 +13,55 @@
 .comments .content {
   position: relative;
   left: 10%;
-  padding: 16px;
+  margin: 16px;
+  width:fit-content;
+  width: 90%;
+}
+
+.comments .content .introText {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+form .formContent {
+  display: flex;
+  flex-direction: column;
+}
+
+form .formContent .formInput {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 70%;
+}
+
+form .formContent .formInput .name {
+  display: flex;
+}
+
+form .formContent .formInput .name .firstName {
+  margin: 16px;
+  width: 50%;
+}
+
+form .formContent .formInput .name .lastName {
+  margin: 16px;
+  width: 50%;
+}
+
+form .formContent .formInput .subject {
+  display: flex;
+  margin: 16px;
+}
+
+form .formContent .formInput .message {
+  margin: 16px;;
+}
+
+form .formContent .submit {
+  display: flex;
+  width: 70%;
+  justify-content: end;
 }
