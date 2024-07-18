@@ -7,8 +7,7 @@ import {
   ListItemAvatar,
   ListItemText,
   TextField,
-  Button,
-  Divider
+  Button
 } from "@mui/material";
 
 export default function Comments() {
