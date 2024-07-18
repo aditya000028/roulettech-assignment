@@ -66,7 +66,7 @@ export default function Comments() {
                   <div className={classes.comment}>
                     <ListItem key={comment.id} alignItems="flex-start">
                       <ListItemAvatar>
-                        <Avatar alt="pic">{comment.name.charAt(0)}</Avatar>
+                        <Avatar alt="pic">{comment.firstName.charAt(0) + comment.lastName.charAt(0)}</Avatar>
                       </ListItemAvatar>
                       <ListItemText
                         primary={comment.subject}
