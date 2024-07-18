@@ -19,6 +19,7 @@ nav {
   width: 30%;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .links {

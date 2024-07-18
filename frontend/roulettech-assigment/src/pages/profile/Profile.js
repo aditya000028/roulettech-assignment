@@ -1,4 +1,5 @@
 import AboutMe from "../../components/about-me/About-Me";
+import Comments from "../../components/comments/Comments";
 import Education from "../../components/education/Education";
 import Introduction from "../../components/introduction/Introduction";
 import classes from "./Profile.module.css";
@@ -9,6 +10,7 @@ export default function ProfilePage() {
       <Introduction />
       <AboutMe />
       <Education />
+      <Comments />
     </div>
   );
 }
