@@ -1,0 +1,32 @@
+.education {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.education::before {
+  content: "";
+  background-image: url('../../pictures/SFU.jpg');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  filter: brightness(20%);
+}
+
+.education .content {
+  position: relative;
+  left: 10%;
+  width: 100%;
+  padding: 16px;
+  display: flex;
+}
+
+.education .content .text {
+  width: 50%;
+}
