@@ -26,6 +26,12 @@
   width: 90%;
 }
 
+.comment .extraInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .comments .content .introText {
   display: flex;
   flex-direction: column;
@@ -72,4 +78,9 @@ form .formContent .submit {
   display: flex;
   width: 70%;
   justify-content: end;
+}
+
+form .formContent .newCommentErrorMessage {
+  color: red;
+  margin: 16px;
 }

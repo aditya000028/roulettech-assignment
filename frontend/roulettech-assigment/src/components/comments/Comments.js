@@ -1,4 +1,4 @@
-import { useState, useRef, Fragment } from "react";
+import { useState, useRef, Fragment, useEffect } from "react";
 import classes from "./Comments.module.css";
 import {
   Avatar,
@@ -7,40 +7,92 @@ import {
   ListItemAvatar,
   ListItemText,
   TextField,
-  Button
+  Button,
 } from "@mui/material";
+import API from "../../api/api";
 
 export default function Comments() {
   const firstNameRef = useRef();
   const lastNameRef = useRef();
   const subjectRef = useRef();
-  const messageRef = useRef();
+  const commentRef = useRef();
   const [firstNameError, setFirstNameError] = useState("");
   const [lastNameError, setLastNameError] = useState("");
   const [subjectError, setSubjectError] = useState("");
-  const [messageError, setMessageError] = useState("");
+  const [commentError, setCommentError] = useState("");
+  const [newCommentError, setNewCommentError] = useState(false);
+  const [userComments, setUserComments] = useState([]);
+  const [userCommentsError, setUserCommentsError] = useState(false);
 
-  const refAndErrorFunc = [
+  const refAndErrorSetters = [
     [firstNameRef, setFirstNameError],
     [lastNameRef, setLastNameError],
     [subjectRef, setSubjectError],
-    [messageRef, setMessageError],
+    [commentRef, setCommentError],
   ];
 
-  const userComments = [];
+  useEffect(() => {
+    API.get("comments/")
+      .then((response) => setUserComments(response.data))
+      .catch((err) => {
+        console.error(err);
+        setUserCommentsError(true);
+      });
+  }, []);
+
+  function validateForm() {
+    let formContainsError = false;
+
+    for (const [ref, setError] of refAndErrorSetters) {
+      setError("");
+      const value = ref.current.value.trim();
+      if (value.length === 0) {
+        setError("Field cannot be empty.");
+        formContainsError = true;
+      }
+
+      if (ref !== commentRef && value.length > 128) {
+        setError("Field cannot be more than 128 characters");
+        formContainsError = true;
+      } else if (ref === commentRef && value.length > 256) {
+        setError("Field cannot be more than 256 characters");
+        formContainsError = true;
+      }
+    }
+
+    return formContainsError;
+  }
+
+  function clearForm() {
+    for (const [ref] of refAndErrorSetters) ref.current.value = "";
+  }
+
+  function submitForm() {
+    const newComment = {
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      timestamp: new Date().toISOString(),
+      subject: subjectRef.current.value,
+      comment: commentRef.current.value,
+    };
+    API.post("comments/", newComment)
+      .then((response) => {
+        setUserComments((prevUserComments) =>
+          prevUserComments.concat(response.data)
+        );
+        clearForm();
+      })
+      .catch((err) => {
+        console.error(err);
+        setNewCommentError(true);
+      });
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    for (const [ref, setError] of refAndErrorFunc) {
-      setError("");
-      const value = ref.current.value.trim();
-      if (value.length === 0) setError("Field cannot be empty.");
-
-      if (ref !== messageRef && value.length > 128)
-        setError("Field cannot be more than 128 characters");
-      else if (ref === messageRef && value.length > 256)
-        setError("Field cannot be more than 256 characters");
+    setNewCommentError(false);
+    if (!validateForm()) {
+      submitForm();
     }
   };
 
@@ -48,13 +100,15 @@ export default function Comments() {
     <div className={classes.comments}>
       <div className={classes.content}>
         <div className={classes.introText}>
-          <h1>Comments?</h1>
+          <h1>Comments</h1>
           <p>
             Something needs improvement? Anything missing? Please feel free to
             write any comments, suggestions, questions, or anything else!
           </p>
         </div>
-        {userComments.length === 0 ? (
+        {userCommentsError ? (
+          <p>Unable to get user comments. Please try again later.</p>
+        ) : userComments.length === 0 ? (
           <p className={classes.noComments}>
             No comments yet - be the first to add a comment.
           </p>
@@ -63,17 +117,29 @@ export default function Comments() {
             <List>
               {userComments.map((comment) => {
                 return (
-                  <div className={classes.comment}>
+                  <div key={comment.id} className={classes.comment}>
                     <ListItem key={comment.id} alignItems="flex-start">
                       <ListItemAvatar>
-                        <Avatar alt="pic">{comment.firstName.charAt(0) + comment.lastName.charAt(0)}</Avatar>
+                        <Avatar alt="pic">
+                          {comment.firstName.charAt(0) +
+                            comment.lastName.charAt(0)}
+                        </Avatar>
                       </ListItemAvatar>
                       <ListItemText
                         primary={comment.subject}
                         secondary={
                           <Fragment>
-                            <span className={classes.timestamp}>{comment.timestamp}</span>
-                            <p className={classes.commentText}>{comment.text}</p>
+                            <div className={classes.extraInfo}>
+                              <span className={classes.commentText}>
+                                {comment.firstName + " " + comment.lastName}
+                              </span>
+                              <span className={classes.timestamp}>
+                                {comment.timestamp}
+                              </span>
+                            </div>
+                            <p className={classes.commentText}>
+                              {comment.comment}
+                            </p>
                           </Fragment>
                         }
                       >
@@ -143,17 +209,24 @@ export default function Comments() {
                   inputProps={{ style: { color: "beige" } }}
                   required
                   focused
-                  inputRef={messageRef}
-                  {...(messageError.length !== 0 ? { error: true } : {})}
-                  helperText={messageError.length === 0 ? "" : messageError}
-                  onChange={() => setMessageError("")}
+                  inputRef={commentRef}
+                  {...(commentError.length !== 0 ? { error: true } : {})}
+                  helperText={commentError.length === 0 ? "" : commentError}
+                  onChange={() => setCommentError("")}
                   fullWidth
                   multiline
                   id="outlined-required"
-                  label="Message"
+                  label="Comment"
                 />
               </div>
             </div>
+            {newCommentError ? (
+              <p className={classes.newCommentErrorMessage}>
+                Oops! Something went wrong, please try again later.
+              </p>
+            ) : (
+              ""
+            )}
             <div className={classes.submit}>
               <Button
                 style={{ backgroundColor: "beige", color: "black" }}
