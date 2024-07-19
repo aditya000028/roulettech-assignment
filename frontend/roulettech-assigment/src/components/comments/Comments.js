@@ -24,7 +24,7 @@ export default function Comments() {
   const [userComments, setUserComments] = useState([]);
   const [userCommentsError, setUserCommentsError] = useState(false);
 
-  const refAndErrorFunc = [
+  const refAndErrorSetters = [
     [firstNameRef, setFirstNameError],
     [lastNameRef, setLastNameError],
     [subjectRef, setSubjectError],
@@ -43,7 +43,7 @@ export default function Comments() {
   function validateForm() {
     let formContainsError = false;
 
-    for (const [ref, setError] of refAndErrorFunc) {
+    for (const [ref, setError] of refAndErrorSetters) {
       setError("");
       const value = ref.current.value.trim();
       if (value.length === 0) {
@@ -63,6 +63,10 @@ export default function Comments() {
     return formContainsError;
   }
 
+  function clearForm() {
+    for (const [ref, _] of refAndErrorSetters) ref.current.value = "";
+  }
+
   function submitForm() {
     const newComment = {
       firstName: firstNameRef.current.value,
@@ -76,6 +80,7 @@ export default function Comments() {
         setUserComments((prevUserComments) =>
           prevUserComments.concat(response.data)
         );
+        clearForm();
       })
       .catch((err) => {
         console.error(err);
