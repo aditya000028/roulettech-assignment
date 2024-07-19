@@ -64,7 +64,7 @@ export default function Comments() {
   }
 
   function clearForm() {
-    for (const [ref, _] of refAndErrorSetters) ref.current.value = "";
+    for (const [ref] of refAndErrorSetters) ref.current.value = "";
   }
 
   function submitForm() {
