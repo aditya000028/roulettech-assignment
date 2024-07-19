@@ -5,8 +5,17 @@ from django.http import HttpResponse
 # Create your views here.
 def getProfileInformationView(request):
   response = {
-    "introduction": "Hey there. I am Aditya Gupta",
-    "aboutMe": """I am Aditya Gupta, a Full Stack Developer. Ironically, I did not want to work with computers until university, 
+    "introduction": """Hello, my name is Aditya Gupta and I am an AWS Certified Full Stack Developer! 
+                    In response to the take-home assignment step for the Software Engineer position at Roulettech Inc., I 
+                    have built a small portfolio website to showcase my skills. As mentioned in the instructions, this website 
+                    is built using React for the frontend, and Django for the backend. I have developed 3 endpoints for the backend - 
+                    a GET endpoint for fetching the text, such as this one, the about me section, and the education section. There is another 
+                    GET enpoint for fetching the comments at the bottom of the page, and finally a POST endpoint for creating new comments. 
+                    Finally, I have also deployed this website to AWS using S3 for the frontend and EC2 for the backend. Additionally, I have 
+                    fulfilled the bonus requirement of using CloudFront for CDN and a custom VPC with a private subnet in it. 
+                    This was an extremely fun assignment, and I am excited to take on challenges and develop innovative solutions 
+                    at Roulettech Inc.""",
+    "aboutMe": """Ironically, I did not want to work with computers until university, 
                   and actually found their complexity to be intimidating. But I took a data structures and algorithms course in 
                   my first year of university course and fell in love with coding. I actually used to save my 
                   Computing Science homework for Fridays because I enjoyed it! Fast-forward to today, and here I am 

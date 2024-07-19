@@ -1,18 +1,14 @@
 import classes from "./Introduction.module.css";
 import profilePicture from "../../pictures/ProfilePicture.jpeg";
 
-export default function Introduction() {
+export default function Introduction(props) {
   return (
     <div className={classes.introduction}>
       <div className={classes.content}>
         <div className={classes.text}>
           <h1>Aditya Gupta</h1>
-          <h2>Software Engineer</h2>
-          <p>
-            jh bwkuhbewbwe fukwegi fweugyf uyeg fyuwegf uweg fuygew fuygwe fuweg
-            fwgyef owgef kuagek ufgakf gwaeiuf iwe fkagdsfkuywge fiuwEKUYFG
-            wkeug fkuwg fkugeywf kuywegf kuweg fkugy
-          </p>
+          <h2>AWS Certified Full Stack Developer</h2>
+          <p>{props.text}</p>
         </div>
         <img src={profilePicture} alt="profile" />
       </div>
