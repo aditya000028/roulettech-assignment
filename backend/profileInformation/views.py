@@ -3,7 +3,7 @@ import json
 from django.http import HttpResponse
 
 # Create your views here.
-def index(request):
+def getProfileInformationView(request):
   response = {
     "aboutMe": "Something about me",
     "education": "My education is that I am educated"

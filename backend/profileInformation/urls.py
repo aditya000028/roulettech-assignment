@@ -1,7 +1,7 @@
 from django.urls import path
 
-from . import views
+from .views import getProfileInformationView
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("profile/", getProfileInformationView, name="profileInformation"),
 ]
