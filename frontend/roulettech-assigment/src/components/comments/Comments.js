@@ -100,7 +100,7 @@ export default function Comments() {
     <div className={classes.comments}>
       <div className={classes.content}>
         <div className={classes.introText}>
-          <h1>Comments?</h1>
+          <h1>Comments</h1>
           <p>
             Something needs improvement? Anything missing? Please feel free to
             write any comments, suggestions, questions, or anything else!
